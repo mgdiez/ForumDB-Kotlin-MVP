@@ -1,6 +1,6 @@
 ## Json-PlaceHolder-MVP
 
-Simple MVP repository
+Simple MVP app
 
 * Kodein
 * Coroutines
