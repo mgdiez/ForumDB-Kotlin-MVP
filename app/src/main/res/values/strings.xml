@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">JsonPlaceholder</string>
+    <string name="comments">Comments</string>
+    <string name="write_your_comment_here">Write your comment here...</string>
+</resources>

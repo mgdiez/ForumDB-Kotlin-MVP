@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+    <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/commentSection"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/item"
+                    style="@style/Base.TextAppearance.AppCompat.Widget.PopupMenu.Header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    android:id="@+id/titleItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    tools:text="title"/>
+
+            <TextView
+                    android:id="@+id/body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    tools:text="body"/>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/darker_gray"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/comments"
+                    android:textColor="@android:color/black"/>
+
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                <android.support.v4.widget.ContentLoadingProgressBar
+                        android:id="@+id/progressView"
+                        style="@style/Base.Widget.AppCompat.ProgressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+            </FrameLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+            android:id="@+id/commentSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary"
+            android:layout_alignParentBottom="true">
+
+        <EditText
+                android:id="@+id/commentText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/write_your_comment_here"
+                android:textColor="@android:color/white"
+                android:inputType="text"
+        />
+
+        <ImageButton
+                android:id="@+id/sendComment"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:src="@drawable/baseline_send_black_18dp"
+                android:background="@android:color/transparent" android:layout_marginLeft="10dp"
+                tools:ignore="ContentDescription"/>
+
+    </LinearLayout>
+</RelativeLayout>
