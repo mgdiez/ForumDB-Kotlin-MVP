@@ -1,4 +1,4 @@
-## Json-PlaceHolder-MVP
+## ForumDB-Kotlin-MVP
 
 Simple MVP app
 
