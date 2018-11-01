@@ -12,3 +12,4 @@ TODO:
 * Unit testing
 * Move to Kodein
 * Add Either object (Arrow) as return type coroutines
+* Better error handling
