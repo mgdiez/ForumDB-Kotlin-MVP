@@ -27,7 +27,7 @@ val appModule = module {
     factory { GetItemCommentsUseCase(get()) }
     factory<ItemsListContract.Presenter> { ItemsListPresenter(get(), Dispatchers.Main) }
     factory<ItemDetailContract.Presenter> { ItemDetailPresenter(get(), Dispatchers.Main) }
-    single<ItemsRepository> { ItemsRepositoryImpl(get()) }
+    single<ItemsRepository> { ItemsRepository.NetworkRepository(get()) }
     single { NetworkDataSource(get(), get()) }
     single { ItemsMapper() }
     single<ItemsApi> { get<Retrofit>().create() }

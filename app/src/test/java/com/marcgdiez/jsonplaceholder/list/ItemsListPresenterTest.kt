@@ -1,6 +1,8 @@
 package com.marcgdiez.jsonplaceholder.list
 
 import com.marcgdiez.jsonplaceholder.business.Item
+import com.marcgdiez.jsonplaceholder.core.Either
+import com.marcgdiez.jsonplaceholder.core.Failure
 import com.marcgdiez.jsonplaceholder.datasource.NetworkSourceException
 import com.marcgdiez.jsonplaceholder.list.usecase.GetItemsListUseCase
 import com.nhaarman.mockito_kotlin.given
@@ -52,7 +54,7 @@ class ItemsListPresenterTest {
         fakeItems.add(provideFakeItem())
         fakeItems.add(provideFakeItem())
 
-        given { runBlocking { getItemsListUseCase.execute() } }.willReturn(fakeItems)
+        given { runBlocking { getItemsListUseCase.execute() } }.willReturn(Either.Right(fakeItems))
 
         presenter.onViewReady()
 
@@ -61,7 +63,7 @@ class ItemsListPresenterTest {
 
     @Test
     fun `show error when network fails`() {
-        given { runBlocking { getItemsListUseCase.execute() } }.willThrow(NetworkSourceException())
+        given { runBlocking { getItemsListUseCase.execute() } }.willReturn(Either.Left(Failure.NetworkError()))
 
         presenter.onViewReady()
 

@@ -2,7 +2,7 @@ package com.marcgdiez.jsonplaceholder.list
 
 import com.marcgdiez.jsonplaceholder.business.Item
 import com.marcgdiez.jsonplaceholder.core.BasePresenter
-import com.marcgdiez.jsonplaceholder.datasource.NetworkSourceException
+import com.marcgdiez.jsonplaceholder.core.Failure
 import com.marcgdiez.jsonplaceholder.list.usecase.GetItemsListUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.GlobalScope
@@ -18,16 +18,18 @@ class ItemsListPresenter(
         view?.showProgress()
 
         GlobalScope.launch(context = dispatcher) {
-            try {
-                val items = getItemsListUseCase.execute()
-                view?.showItems(items)
-            } catch (e: NetworkSourceException) {
-                view?.showInternetError()
-            } finally {
-                view?.hideProgress()
-            }
+            val comments = getItemsListUseCase.execute()
+            comments.either(::handleError, ::handleSuccess)
+            view?.hideProgress()
         }
+    }
 
+    private fun handleError(failure: Failure) {
+        view?.showInternetError()
+    }
+
+    private fun handleSuccess(items: List<Item>) {
+        view?.showItems(items)
     }
 
     override fun onItemClick(it: Item) {

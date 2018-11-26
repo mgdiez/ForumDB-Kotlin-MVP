@@ -2,6 +2,8 @@ package com.marcgdiez.jsonplaceholder.detail
 
 import com.marcgdiez.jsonplaceholder.business.Comment
 import com.marcgdiez.jsonplaceholder.business.Item
+import com.marcgdiez.jsonplaceholder.core.Either
+import com.marcgdiez.jsonplaceholder.core.Failure
 import com.marcgdiez.jsonplaceholder.datasource.NetworkSourceException
 import com.marcgdiez.jsonplaceholder.detail.usecase.GetItemCommentsUseCase
 import com.nhaarman.mockito_kotlin.any
@@ -55,7 +57,7 @@ class ItemDetailPresenterTest {
 
     @Test
     fun `show error when network fails`() {
-        given { runBlocking { getItemCommentsUseCase.execute(any()) } }.willThrow(NetworkSourceException())
+        given { runBlocking { getItemCommentsUseCase.execute(any()) } }.willReturn(Either.Left(Failure.NetworkError()))
 
         presenter.onViewReady(fakeItem)
 
@@ -68,7 +70,7 @@ class ItemDetailPresenterTest {
         val arrayList = ArrayList<Comment>()
         arrayList.add(provideFakeComment())
 
-        given { runBlocking { getItemCommentsUseCase.execute(any()) } }.willReturn(arrayList)
+        given { runBlocking { getItemCommentsUseCase.execute(any()) } }.willReturn(Either.Right(arrayList))
 
         presenter.onViewReady(fakeItem)
 
