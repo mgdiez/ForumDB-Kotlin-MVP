@@ -2,14 +2,14 @@
 
 Simple MVP app
 
-* Kodein
+* Koin
 * Coroutines
 * MVP
 * Clean Architecture
 
 
 TODO:
-* Unit testing
+* UI testing
 * Move to Kodein
 * Add Either object (Arrow) as return type coroutines
 * Better error handling
