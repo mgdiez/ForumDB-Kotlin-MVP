@@ -61,7 +61,6 @@ class ItemDetailActivity : AppCompatActivity(), ItemDetailContract.View {
 
     override fun hideProgress() = progressView.hide()
 
-
     override fun showProgress() = progressView.show()
 
     override fun showComments(comments: List<Comment>) {
@@ -99,5 +98,4 @@ class ItemDetailActivity : AppCompatActivity(), ItemDetailContract.View {
     override fun showInternetError() {
         internetErrorDialog()
     }
-
 }

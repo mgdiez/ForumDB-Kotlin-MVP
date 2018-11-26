@@ -2,7 +2,7 @@ package com.marcgdiez.jsonplaceholder.repository
 
 import com.marcgdiez.jsonplaceholder.datasource.dto.CommentResponseDto
 import com.marcgdiez.jsonplaceholder.datasource.dto.ItemsResponseDto
-import kotlinx.coroutines.experimental.Deferred
+import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Path
 

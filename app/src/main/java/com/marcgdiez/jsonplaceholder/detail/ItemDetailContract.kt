@@ -21,6 +21,5 @@ interface ItemDetailContract {
     interface Presenter : MvpPresenter<View> {
         fun onViewReady(item: Item)
         fun onSendCommentClick(text: String)
-
     }
 }

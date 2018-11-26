@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">JsonPlaceholder</string>
     <string name="comments">Comments</string>
-    <string name="write_your_comment_here">Write your comment here...</string>
+    <string name="write_your_comment_here">Write your comment here…</string>
+    <string name="something_went_wrong">"Woops! Something went wrong!"</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.marcgdiez.jsonplaceholder.di
+package com.marcgdiez.jsonplaceholder.extensions
 
 import retrofit2.Retrofit
 

@@ -4,17 +4,20 @@ import com.marcgdiez.jsonplaceholder.business.Item
 import com.marcgdiez.jsonplaceholder.core.BasePresenter
 import com.marcgdiez.jsonplaceholder.datasource.NetworkSourceException
 import com.marcgdiez.jsonplaceholder.list.usecase.GetItemsListUseCase
-import kotlinx.coroutines.experimental.Dispatchers
-import kotlinx.coroutines.experimental.GlobalScope
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class ItemsListPresenter(val getItemsListUseCase: GetItemsListUseCase) : BasePresenter<ItemsListContract.View>(),
+class ItemsListPresenter(
+    private val getItemsListUseCase: GetItemsListUseCase,
+    private val dispatcher: CoroutineDispatcher
+) : BasePresenter<ItemsListContract.View>(),
     ItemsListContract.Presenter {
 
     override fun onViewReady() {
         view?.showProgress()
 
-        GlobalScope.launch(context = Dispatchers.Main) {
+        GlobalScope.launch(context = dispatcher) {
             try {
                 val items = getItemsListUseCase.execute()
                 view?.showItems(items)
