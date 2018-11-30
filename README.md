@@ -10,7 +10,4 @@ Simple MVP app
 
 TODO:
 * UI testing
-* Move to Kodein
-* Add Either object (Arrow) as return type coroutines
-* Better error handling
 * Refactor packages to a better understanding
